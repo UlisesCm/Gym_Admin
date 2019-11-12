@@ -1,0 +1,51 @@
+<div class="row">
+    {{#each notes}}
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between aligh-items-center">
+                        <div>
+                            <h4> 
+                                {{nombre}} 
+                            </h4>
+                        </div>
+                        <div>
+                            <a href="/notes/view/{{_id}}">
+                                <i class="far fa-address-card"></i>
+                            </a>
+
+                            <a href="/notes/edit/{{_id}}"> 
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            
+                        </div> 
+                    </div>
+                    
+                    <p>
+                       Pagar el Dia: {{dia_pago}} 
+                    </p>
+                    <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-danger btn-block btn-sm" type="submit">
+                                Borrar
+                            </button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    {{else}}
+    <div class="card mx-auto">
+        <div class="card-body">
+            <h1> Bienvenido {{user.name}}</h1>
+            <p class="lead">
+                <h4>
+                    No hay Clientes aun!
+                </h4>
+                
+            </p>
+            <a href="/notes/add" class="btn btn-success btn-block"> Crea un cliente!</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
